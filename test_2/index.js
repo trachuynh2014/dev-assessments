@@ -12,10 +12,13 @@
  * @returns  {Object[]}
  */
 module.exports = function test2() {
-  let results;
+  const json = require("./test_data.json");
+  let obj = JSON.parse(JSON.stringify(json));
 
-  // Write your code here.  The pre-written lines above and below are just suggestions, feel free to delete
-  // them and start fresh.
-
-  return results;
+  return obj
+    .filter((ele) => ele.last_name === "Simpson")
+    .map((ele) => ({
+      ...ele,
+      example: `${ele.first_name} ${ele.last_name} says ${ele.catchphrase}`,
+    }));
 };
